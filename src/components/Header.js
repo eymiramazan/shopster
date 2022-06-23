@@ -2,13 +2,13 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from './assets/Shopster.png'
 
-const Header = (props) => {
+const Header = ({ handleLogout, cart }) => {
   const navigate = useNavigate();
 
   const generateCart = async (event) => {
     event.preventDefault();
     try {
-      navigate("/cart", { state: { cart: props.cart } });
+      navigate("/cart", { state: { cart: cart } });
     } catch (error) {
       console.log("error")
     }
@@ -29,7 +29,7 @@ const Header = (props) => {
                   <Link to="/cart" onClick={generateCart} className="block py-2 pr-4 pl-3 ">Cart</Link>
                 </li>
                 <li>
-                  <Link to="/login" className='block py-2 pr-4 pl-3' >Login</Link>
+                  <button onClick={handleLogout} className='block py-2 pr-4 pl-3' >Logout</button>
                 </li>
               </ul>
             </div>
