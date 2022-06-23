@@ -1,0 +1,32 @@
+import React from 'react'
+
+const ProductCard = (props) => {
+  return (
+    <div className='border-solid border-2 border-gray-200 rounded-xl hover:border-gray-400'>
+      <div className="mx-auto px-4 mt-3">
+        <div className="group relative">
+          <div className="w-full h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
+            <img src={props.product.image} alt="Front of men&#039;s Basic Tee in black." className="w-full h-full object-center object-cover lg:w-full lg:h-full" />
+          </div>
+          <div className="mt-4 flex justify-between">
+            <div>
+              <h3 className="text-sm text-gray-700">
+                <span aria-hidden="true" className="absolute inset-0"></span>
+                {props.product.title.slice(0, 25)}
+                <p className="text-sm font-medium text-gray-900">${props.product.price}</p>
+              </h3>
+              <p className="mt-1 text-sm text-gray-500">{props.product.description.slice(0, 25)}</p>
+            </div>
+          </div>
+        </div>
+        <div className='text-center'>
+          <button onClick={
+            () => props.addToCart(props.product.id)
+          } className=' bg-blue-500 hover:bg-blue-700 text-white text-center p-1 mb-3 h-min rounded-lg' type='submit'>Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default ProductCard
